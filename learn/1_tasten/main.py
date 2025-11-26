@@ -15,6 +15,8 @@ async def main():
     current_key = "Press any key..."
 
     run = True
+    tasten = []
+    window.fill((20, 200, 60))
     while run:
         clock.tick(60)
 
@@ -23,14 +25,18 @@ async def main():
                 run = False
             if event.type == pygame.KEYDOWN:
                 # Get the name of the pressed key
-                current_key = f"Taste: {pygame.key.name(event.key)}"
+                current_key = pygame.key.name(event.key)
+                tasten.append(current_key)
                 print(f"Taste: {pygame.key.name(event.key)}")
 
         # Clear screen with dark blue background
-        window.fill((20, 20, 60))
 
         # Render and display the current key text
-        zeige_text(window, current_key)
+
+        if len(tasten) > 1:
+            window.fill((20, 200, 60))
+            zeige_text(window, "".join(tasten))
+            tasten.pop(0)
 
         pygame.display.flip()
         await asyncio.sleep(0)  # required for pygbag

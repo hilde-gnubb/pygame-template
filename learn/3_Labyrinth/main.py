@@ -28,7 +28,10 @@ async def main():
     obj_rotiert = obj
 
     # Wand
-    wand = pygame.Rect(150, 100, 100, 20)
+    wand1 = pygame.Rect(155, 110, 90, 10)
+    wand2 = pygame.Rect(155, 110, 10, 90)
+
+    wände = [wand1, wand2]
 
     # Keine Taste gedrückt
     taste = ""
@@ -70,10 +73,15 @@ async def main():
 
         # Aufgabe 2:
         # Zeichne die Wand als rotes Rechteck
-        pygame.draw.rect(window, (200, 0, 0), wand)
+        for w in wände:
+            pygame.draw.rect(window, (200, 0, 0), w)
         # Prüfe mit der Funktion kollision, ob obj die Wand berührt
         # Nutze dafür die Funktion kollisition(object1, object2) <- oben auskommentiert
-        if kollision(position, wand):
+        eine_kollision = False
+        for w in wände:
+            if kollision(position, w):
+                eine_kollision = True
+        if eine_kollision:
 
             if taste == "right":
                 position.x = position.x - 1

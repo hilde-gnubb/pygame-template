@@ -23,15 +23,18 @@ async def main():
     # Größe verändern
     obj = pygame.transform.scale(obj, (50, 50))
     # Position des Objekts
-    position = obj.get_rect(center=window.get_rect().center)
+    position = obj.get_rect(center=(190, 145))
     # Rotierte Version des Objekts (anfangs unverändert)
     obj_rotiert = obj
-
+    # obj.get_rect center=window.get_rect().center
     # Wand
-    wand1 = pygame.Rect(155, 110, 90, 10)
-    wand2 = pygame.Rect(155, 110, 10, 90)
+    wand1 = pygame.Rect(155, 110, 70, 10)
+    wand2 = pygame.Rect(155, 110, 10, 110)
+    wand3 = pygame.Rect(215, 110, 10, 60)
+    wand4 = pygame.Rect(155, 270, 70, 10)
+    wand5 = pygame.Rect(215, 170, 70, 10)
 
-    wände = [wand1, wand2]
+    wände = [wand1, wand2, wand3, wand4, wand5]
 
     # Keine Taste gedrückt
     taste = ""
